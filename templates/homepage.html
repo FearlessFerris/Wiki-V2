@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% block title %} Homepage {% endblock %}
+
+{% block content %} 
+
+    <div class = 'container h-100'>
+        <div class = 'row h-100 justify-content-center align-items-center'>
+            <div class = 'col-sm-6'>
+                <div class = 'input-group mb-5'>
+                    <input type = 'text' name = 'search-page-term' class = 'border border-info form-control text-center text-info' id = 'search-page-term' placeholder = 'Something cool loading...'>
+                    <button class = 'btn btn-outline-info' type = 'submit'> Search </button> 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class = 'container'>
+        <div class = 'row justify-content-center'>
+            <div class = 'col-auto'>
+                <div id = 'search-pages-container' class = 'text-center'>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
