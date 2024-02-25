@@ -50,10 +50,10 @@ document.addEventListener( 'DOMContentLoaded', function(){
 
             h1.setAttribute( 'class', 'text-info' );
             pa.setAttribute( 'class', 'text-info text-decoration-none' );
-            console.log( p.title );
             a.setAttribute( 'href', `/page/${ p.title }` );
-            console.log( a );
             a.setAttribute( 'class', 'text-decoration-none' );
+            a.setAttribute( 'id', `anchor-${ p.title }` );
+            div.setAttribute( 'id', `div-${ p.title }`);
 
             h1.innerText = p.title;
             h1.append( img );
@@ -61,11 +61,6 @@ document.addEventListener( 'DOMContentLoaded', function(){
             div.append( h1, pa );
             a.append( div );
             container.append( a );
-
-            a.addEventListener( 'click', function() {
-                // e.preventDefault();
-                getPageInfo( p.title );
-            });
         }
     }
     
@@ -75,8 +70,6 @@ document.addEventListener( 'DOMContentLoaded', function(){
         const pages = promise.data.pages;
         clearPages();
         appendPages( pages );
-        console.log( url );
-        console.log( pages );
     }
 
     const clearPages = () => {
@@ -84,29 +77,5 @@ document.addEventListener( 'DOMContentLoaded', function(){
         return searchPagesContainer;
     }
 
-    const base = document.getElementsByTagName( 'base' )
-    for ( let i of base ) {
-        i.setAttribute('href', 'http://127.0.0.1:5000/')
-    }
-    
-    // // Logic for page information 
-    // const getPageInfo = async ( title ) => {
-    //     const url = `${ getPageEndpoint }${ title }/html`;
-    //     const promise = await axios.get( url );
-    //     const html = promise.text;
-    //     console.log( promise );
-    //     console.log( html );
-
-    //     appendPageInfo( html );
-
-    // }
-
-    // const appendPageInfo = ( res ) => {
-    //     const container = document.getElementById( 'page-html' );
-    //     console.log( container );
-    //     console.log( res.data );
-    //     container.append( res.data );
-    // }
-    
 });
 
