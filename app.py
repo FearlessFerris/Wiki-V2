@@ -35,6 +35,7 @@ def get_info( title ):
             return render_template( 'error.html', message = 'Failed to recieve page information' )
 
         resHtml = BeautifulSoup( res.text, 'html.parser' )
+        stringTitle = resHtml.title.string
 
         base_tags = resHtml.find_all( 'base' )
         for base_tag in base_tags:
@@ -47,12 +48,12 @@ def get_info( title ):
 
         html = resHtml.prettify()
         
-        return render_template( 'page.html', title = title, html = html )
+        return render_template( 'page.html', title = title, html = html, stringTitle = stringTitle )
 
     except requests.RequestException as e:
         return render_template( 'error.html', message = 'Failed to retrieve page information: {}' .format( e ))
     
-     
+
     
 
 

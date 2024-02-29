@@ -23,10 +23,17 @@ class User( db.Model ):
     dob = db.Column( db.Text, nullable = True )
     image_url = db.Column( db.Text, nullable = False )
 
+    def __init__( self, username, password, email, image_url, dob = None ):
+        """ Initialize User """ 
+        self.username = username 
+        self.password = password 
+        self.email = email
+        self.image_url = image_url
+        self.dob = dob 
+
     def __repr__( self ):
         """ Representation Method of User Instance """
         return f"User( id = { self.id }, username = '{ self.username }', password = '{ self.password }', email = '{ self.email }', image_url = '{ self.image_url }')"
-    
 
     
 class Search( db.Model ):
